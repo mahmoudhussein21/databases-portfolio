@@ -1,0 +1,6 @@
+.venv/
+.env
+*.db
+*.duckdb
+__pycache__/
+*.py[cod]
