@@ -1,0 +1,13 @@
+SQLite shell tour
+
+1. Tables:
+reading
+
+2. Table structure:
+CREATE TABLE reading(machine TEXT, vib REAL);
+
+3. Highest vibration per machine:
+machine  peak
+-------  ----
+cnc-01   1.2 
+cnc-02   2.4 
