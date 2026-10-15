@@ -11,3 +11,7 @@ machine  peak
 -------  ----
 cnc-01   1.2 
 cnc-02   2.4 
+
+4. Query timing:
+SELECT machine, MAX(vib) AS peak FROM reading GROUP BY machine;
+Run Time: real 0.004 user 0.000270 sys 0.003474
