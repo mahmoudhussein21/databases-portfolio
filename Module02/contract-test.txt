@@ -1,0 +1,7 @@
+PASS Pydantic serial prefix
+PASS Pydantic calendar date
+PASS FK orphan job
+PASS duplicate part primary key
+PASS duplicate job-part link
+PASS negative price
+All contract tests passed.

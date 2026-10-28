@@ -1,0 +1,6 @@
+PASS rejected incompatible CNC row, injection field supplied: CHECK constraint failed: (machine_type='CNC' AND cnc_axes IS NOT NULL AND cnc_axes > 0 AND clamp_force_kn IS NULL)
+   OR
+   (machine_type='INJECTION' AND clamp_force_kn IS NOT NULL AND clamp_force_kn > 0 AND cnc_axes IS NULL)
+PASS rejected CNC parent cannot have injection child: FOREIGN KEY constraint failed
+PASS valid single-table rows: 2
+PASS valid subtype rows: 2

@@ -1,0 +1,8 @@
+Tables: job_part, machine, maint_job, part, technician
+Number of tables: 5
+FK references: 4
+job_part.part_no -> part.part_no
+job_part.job_id -> maint_job.job_id
+maint_job.technician_id -> technician.technician_id
+maint_job.machine_id -> machine.machine_id
+job_part composite PK: job_id, part_no

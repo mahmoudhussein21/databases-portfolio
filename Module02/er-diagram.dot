@@ -1,0 +1,14 @@
+digraph ER {
+  graph [rankdir=LR, splines=polyline, pad=0.25, nodesep=0.65, ranksep=1.0, bgcolor="white", fontname="DejaVu Sans"];
+  node [shape=record, fontname="DejaVu Sans", fontsize=12, style=filled, fillcolor="white", color="#555555"];
+  edge [fontname="DejaVu Sans", fontsize=10, color="#444444", dir=none];
+  machine [label="{Machine|PK machine_id\lUK serial_no\lUK machine_name\lsite\linstalled\l}"];
+  technician [label="{Technician|PK technician_id\lname\l}"];
+  job [label="{MaintenanceJob|PK job_id\lFK machine_id\lFK technician_id\ldone_on\l}"];
+  part [label="{Part|PK part_no\ldescription\lunit_price\l}"];
+  job_part [label="{JobPart|PK/FK job_id\lPK/FK part_no\l}"];
+  machine -> job [label="1 : 0..many jobs"];
+  technician -> job [label="1 : 0..many jobs"];
+  job -> job_part [label="1 : 0..many links"];
+  part -> job_part [label="1 : 0..many links"];
+}
