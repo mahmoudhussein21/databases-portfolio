@@ -1,45 +1,64 @@
 # Task 5 (optional) — Mermaid ER diagram notebook
 
-These are **redrawings/adaptations**, with the original learning references linked. The third is **deliberately wrong as a physical schema**, not a claim that the credited external article is incorrect.
+These three examples illustrate concepts covered by the linked learning references. The third is **deliberately incomplete as a physical database schema**, not a claim that the referenced source is wrong.
 
 ## 1. Good: Order / line-item junction
 
-Adapted from [Mermaid official ERD examples](https://mermaid.js.org/syntax/entityRelationshipDiagram.html). An order has line items, and a product can be referenced on many line items. This replaces the direct order-product m:n with a junction entity.
+This example uses the [Mermaid ER diagram notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html). An order can have line items, and a product can be referenced by many line items. This replaces the direct order-product m:n with a junction entity.
 
 ```mermaid
 erDiagram
  CUSTOMER ||--o{ CUSTOMER_ORDER : places
- CUSTOMER_ORDER ||--|{ LINE_ITEM : contains
+ CUSTOMER_ORDER ||--o{ LINE_ITEM : contains
  PRODUCT ||--o{ LINE_ITEM : appears_in
- CUSTOMER { int customer_id PK }
- CUSTOMER_ORDER { int order_id PK int customer_id FK }
- PRODUCT { string sku PK }
- LINE_ITEM { int order_id PK,FK string sku PK,FK int quantity }
+ CUSTOMER {
+     int customer_id PK
+ }
+ CUSTOMER_ORDER {
+     int order_id PK
+     int customer_id FK
+ }
+ PRODUCT {
+     string sku PK
+ }
+ LINE_ITEM {
+     int order_id PK,FK
+     string sku PK,FK
+     int quantity
+ }
 ```
 
 **Lesson:** Associative `LINE_ITEM` has its own business field (`quantity`) and composite identifier; modeling a relationship as an entity can carry facts about that relationship. Here the model assumes a line is uniquely identified by order + SKU.
 
 ## 2. Strange: Recursive manager / employee
 
-Adapted from [Vertabelo Academy's self-join employee/supervisor tutorial](https://academy.vertabelo.com/course/joins/self-join/introduction/introduction). One entity relates back to itself.
+Based on the employee/supervisor concept in [Vertabelo Academy’s self-join tutorial](https://academy.vertabelo.com/course/joins/self-join/introduction/introduction). One entity relates back to itself.
 
 ```mermaid
 erDiagram
- EMPLOYEE ||--o{ EMPLOYEE : supervises
- EMPLOYEE { int employee_id PK string name int supervisor_id FK }
+ EMPLOYEE |o--o{ EMPLOYEE : supervises
+ EMPLOYEE {
+     int employee_id PK
+     string name
+     int supervisor_id FK
+ }
 ```
 
 **Lesson:** Recursive 1:n uses an FK pointing to the *same table*. An employee can have no supervisor, but each employee has at most one direct supervisor. The diagram is a simplification; cycles must be prevented separately if prohibited by policy.
 
 ## 3. Wrong/confusing: direct m:n sketched as if it were finished relational DDL
 
-This **deliberately incomplete sketch** demonstrates the m:n notation discussed in [Lucidchart's guide](https://www.lucidchart.com/blog/types-of-entity-relationship-diagrams). It works as a *conceptual* statement, not as a complete relational physical schema.
+This **deliberately incomplete sketch** illustrates the m:n relationship described in [Lucid’s ERD guide](https://www.lucidchart.com/blog/types-of-entity-relationship-diagrams). It works as a *conceptual* statement, not as a complete relational physical schema.
 
 ```mermaid
 erDiagram
  WORK_ORDER }o--o{ PART : uses
- WORK_ORDER { int job_id PK }
- PART { string part_no PK }
+ WORK_ORDER {
+     int job_id PK
+ }
+ PART {
+     string part_no PK
+ }
 ```
 
 **Problem:** Without `JOB_PART(job_id,part_no)` there is no table to store associations or enforce no repeated part within the same work order. Do not confuse a valid *conceptual* m:n drawing with its relational implementation.
@@ -58,7 +77,3 @@ A claim like *a car has exactly four wheels* is a context-specific rule, not a u
 ## Inheritance overuse
 
 Mermaid's ER diagram syntax does not express true disjoint/total EER specialization; a class diagram or constraints + annotations are needed. A `Vehicle → Car/Truck` hierarchy is sensible if the subtypes have major distinct structures or behaviors; with only a few subtype properties, a `vehicle_type` column plus checks is simpler. Likewise, a `Person → Customer/Employee/Student` hierarchy can overcomplicate a schema because one person may hold multiple roles simultaneously; model `person` and optional role-membership tables instead of forcing disjoint child classes.
-
-## Diagram caption for Discord
-
-"Our job–part diagram shows why a many-to-many relationship needs an explicit junction table: otherwise the SQL can't reliably record which part belongs to which job."
