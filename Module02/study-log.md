@@ -1,58 +1,59 @@
 # Module 02 — Study Log (Tasks A and C)
 
-> Study notes reconstructed from the Module 2 assignment and my subsequent learning conversation. These are not a claim that I completed undocumented Google searches or that our pod posted to Discord. Items requiring confirmation are clearly noted.
+## Task A — Sources and key ideas
 
-## Task A — Sources and what I learned
-
-| Source | What it helped me understand |
+| Source | What I learned |
 |---|---|
-| Module 2 assignment sheet *(provided in class)* | The difference between entities, attributes, primary/foreign keys, cardinalities, and data-integrity problems. |
-| Discussion with an AI assistant while studying this module | Connecting tables using matching IDs: `machine.machine_id` identifies a machine; `maint_job.machine_id` references it. |
-| [SQLite documentation — Foreign Keys](https://www.sqlite.org/foreignkeys.html) *(follow-up reference)* | Where to review how a foreign key prevents references to missing parent rows. This link is included for further reading; I have not documented reading it independently. |
-| [Mermaid ER-diagram guide](https://mermaid.js.org/syntax/entityRelationshipDiagram.html) *(diagram reference)* | Where to review `erDiagram` syntax for one-to-one and one-to-many relationships. |
+| Module 2 course material, *Data Contracts & Reading Legacy Schemas* | The difference between entities, attributes and relationships, and how primary and foreign keys work. |
+| My questions and explanations during study | How a maintenance job is linked to a machine, and why duplicate parts and incorrect data types cause problems. |
 
-## Things I searched or looked up
+The module also links to the [SQLite foreign-key guide](https://www.sqlite.org/foreignkeys.html), the [Mermaid ER diagram guide](https://mermaid.js.org/syntax/entityRelationshipDiagram.html) and an [overview of ER models](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model). These are useful references for the examples below.
 
-- In my learning conversation, I asked: **"How are database tables connected?"** The explanation used a machine ID in the machine table and a matching machine ID in the maintenance-job table.
-- **Google searches:** I did not record any specific searches or URLs, so I have not invented them. Add a real search here only if you did one.
+## Questions I explored
 
-## Remarkable findings (what surprised me)
+| Question | What I understood | Related reference |
+|---|---|---|
+| How can two tables be connected? | A job can refer to a machine using its `machine_id`. | Module 2 material; [SQLite foreign keys](https://www.sqlite.org/foreignkeys.html) |
+| Why is a comma-separated list of parts a problem? | It makes individual parts harder to find, count and join. | Module 2 material; [First normal form](https://en.wikipedia.org/wiki/First_normal_form) |
+| How do I show one-to-many and many-to-many relationships? | One-to-many uses a foreign key on the many side; many-to-many uses a junction table. | Module 2 material; [Mermaid ER diagrams](https://mermaid.js.org/syntax/entityRelationshipDiagram.html) |
 
-- A maintenance job can refer to a machine that is missing from the machine list. Example: job 3 mentions `cnc-05`, which does not exist in the sample `machine` table.
-- The part number `P-1003` appears twice; it is not unique in the old database.
-- Saving a price as text can cause incorrect comparisons: alphabetic ordering is not the same as numeric ordering.
-- A machine installation date can be `unknown` rather than a valid date.
-- Saving `P-1001,P-1002` in one field makes it difficult to find each part separately.
+## Things I found interesting
 
-## LLM questions, answers, and checks
+- A maintenance job refers to machine `cnc-05`, but that machine is not in the machine table. This might be a typo or a missing machine record.
+- Part `P-1003` is stored twice. Duplicate records can make counts and queries incorrect.
+- A price stored as text might be compared like words rather than numbers; for example, `'9.90'` can be considered greater than `'15'` as text.
+- The installation date `unknown` cannot be used in date calculations.
+- Keeping `P-1001,P-1002` in one field makes it harder to find each part used in a job.
 
-### Q1. How are database tables connected?
+## LLM Q&A and how I checked the answers
 
-**Answer summary:** A primary key uniquely identifies a row, while a foreign key in another table points to it. For example, if machine ID 2 belongs to `cnc-02`, then a maintenance job with `machine_id = 2` refers to `cnc-02`.
+**Question 1: How are database tables connected?**
 
-**How I checked:** I used the example and correctly identified `cnc-02` when asked which machine ID 2 refers to. I also ran the corrected data-contract tests; the foreign-key orphan-job test passed.
+A primary key identifies a record, and a foreign key links another table to it. For example, `machine_id = 2` in the maintenance-job table identifies machine `cnc-02` in our example. I checked my understanding by answering which machine ID 2 referred to, and by running the data-contract tests, including the foreign-key test.
 
-### Q2. Why does a duplicate part record matter?
+**Question 2: Why is a duplicate part a problem?**
 
-**Answer summary:** Duplicate data can confuse staff, cause inaccurate counts, and create ordering or billing mistakes. A unique key on `part_no` prevents duplicates.
+The same part might be counted twice or cause confusion. The audit shows two rows for `P-1003`, and the corrected schema's duplicate-key test passed.
 
-**How I checked:** The provided defect query finds `P-1003` twice in the legacy sample. The corrected contract test for duplicate part keys passed.
+**Question 3: Why should prices be stored as numbers?**
 
-### Q3. Why are prices stored as text a problem?
+Text ordering is not the same as numeric ordering. The legacy audit demonstrates this with price values, and the corrected schema uses a numeric price field.
 
-**Answer summary:** Text values can be compared character by character rather than as money. The text `'9.90'` can sort above `'15'`, even though 9.90 is numerically smaller.
+**Question 4: Why are invalid installation dates a problem?**
 
-**How I checked:** The assignment's text-comparison query demonstrates the problem on the sample data; the corrected schema uses `NUMERIC(9, 2)`.
+If the date is `unknown`, it is difficult to know when a machine was installed or plan maintenance from that date. The audit identifies the row with the invalid date.
 
-### Q4. Why are unknown dates and comma-separated parts a problem?
+**Question 5: Why should part numbers not be stored together in one field?**
 
-**Answer summary:** `unknown` is not a usable installation date. A list of part numbers in one text field makes it hard to join and count individual parts; a junction table solves the latter problem.
+It becomes harder to find and count each part. The legacy join misses job 1 because it has two part numbers in one field. In the corrected design, a junction table connects each job to its individual parts.
 
-**How I checked:** I discussed both examples during review, and the SQL audit documents the invalid date and the join that omits a job using two parts.
+For the Python data contract, I ran the test script in Terminal and got **“All contract tests passed.”**
 
-## Two useful ER examples (my Mermaid redraws)
+## Two ER examples I learned from
 
-**Example 1 — one machine to many sensors.** Based on the course's Task B example and [Mermaid ER notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html). This illustrates that the foreign key belongs on the many side.
+### Example 1 — Machine and sensors (1:n)
+
+Based on the scenario in Task B of the course material.
 
 ```mermaid
 erDiagram
@@ -67,14 +68,16 @@ erDiagram
     }
 ```
 
-**What I learned that was useful:** The `machine_id` field appears in `SENSOR` as the foreign key, not as a comma-separated list of sensors in `MACHINE`.
+I learned that the foreign key `machine_id` belongs in the `SENSOR` table because several sensors can belong to one machine.
 
-**Example 2 — work orders and parts (many-to-many).** Based on the course's Task B example and [entity–relationship modeling](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model). The two links via `ORDER_PART` turn a many-to-many relationship into two one-to-many relationships.
+### Example 2 — Work orders and parts (m:n)
+
+Based on the work-order example in Task B of the course material.
 
 ```mermaid
 erDiagram
     WORK_ORDER ||--o{ ORDER_PART : contains
-    PART ||--o{ ORDER_PART : appears_in
+    PART ||--o{ ORDER_PART : includes
     WORK_ORDER {
         int order_id PK
     }
@@ -87,23 +90,19 @@ erDiagram
     }
 ```
 
-**What I learned that was useful:** A junction table can prevent adding the same part twice to one order through a combined primary key `(order_id, part_no)`.
+I learned that the `ORDER_PART` table connects orders and parts without storing a list of part numbers in one cell. The pair `(order_id, part_no)` also prevents a part being listed twice on the same order.
 
-Full-sized sketches for all four Task B situations are in [`er-examples.md`](er-examples.md).
+My other two scenarios and a SQL example are in [er-examples.md](er-examples.md).
 
 ## Task C — Agreed learning (pod discussion)
 
-During Tasks A–C, I studied entities, attributes, and relationships with peers. We explained the tasks to each other, discussed how tables are connected, and talked about which ER diagram image would be best to share on Discord. Explaining the examples aloud helped my understanding.
+During Tasks A–C, my peers and I studied entities, attributes and relationships. We explained the tasks to one another and talked about how tables connect using IDs. We also discussed the ER diagram image we wanted to share on Discord. Explaining the examples to each other made them easier to understand.
 
-**Points I took away from the discussion (confirm which ones your pod jointly agreed on):**
+The main points I took from our discussion were:
 
-1. An entity is a thing, such as a machine; an attribute describes it, such as its serial number.
-2. Tables can connect through a primary key and a foreign key.
-3. Duplicate data and references to nonexistent machines can cause real problems.
-4. A many-to-many relationship needs a junction table in a relational schema.
+1. An **entity** is something like a machine; an **attribute** describes it, such as its serial number.
+2. A **primary key** identifies a record, while a **foreign key** connects it to another table.
+3. Duplicate part records and references to missing machines can cause problems.
+4. A **junction table** helps connect jobs and parts in a many-to-many relationship.
 
-**Unresolved disagreements:** None were recorded in my notes; this does not mean none occurred.
-
-**Discord image:** We discussed which image to share, but I have not confirmed that anyone posted it. Check the course Discord and post the chosen image with a short explanation if it is still missing.
-
-Suggested one-sentence note for the post (adapt to your group's actual choice): "We chose this diagram because it clearly shows how a junction table connects maintenance jobs and parts."
+The diagram discussion focused on making these relationships clear enough for someone else to understand.

@@ -1,6 +1,6 @@
 # Module 02 — Task B: Four ER Sketches and One SQL Proof
 
-These are my four Mermaid redraws of the scenarios in the course task. `PK` means primary key and `FK` means foreign key.
+These four ER sketches show the scenarios from Task B. `PK` means primary key and `FK` means foreign key.
 
 ## 1. One-to-one: Machine and Nameplate
 
@@ -94,7 +94,7 @@ erDiagram
 
 ## SQL demonstration — one machine, two sensors
 
-The following script creates the tables, inserts one parent machine and **two sensor rows**, and counts sensors per machine. Save/run with SQLite if desired.
+This SQL example creates a machine and two sensors, then counts how many sensors belong to each machine.
 
 ```sql
 PRAGMA foreign_keys = ON;

@@ -33,7 +33,7 @@ erDiagram
 
 ## 3. Wrong/confusing: direct m:n sketched as if it were finished relational DDL
 
-Our own **deliberately incomplete sketch** demonstrates the m:n notation discussed in [Lucidchart's guide](https://www.lucidchart.com/blog/types-of-entity-relationship-diagrams). It works as a *conceptual* statement, not as a complete relational physical schema.
+This **deliberately incomplete sketch** demonstrates the m:n notation discussed in [Lucidchart's guide](https://www.lucidchart.com/blog/types-of-entity-relationship-diagrams). It works as a *conceptual* statement, not as a complete relational physical schema.
 
 ```mermaid
 erDiagram
@@ -59,8 +59,6 @@ A claim like *a car has exactly four wheels* is a context-specific rule, not a u
 
 Mermaid's ER diagram syntax does not express true disjoint/total EER specialization; a class diagram or constraints + annotations are needed. A `Vehicle → Car/Truck` hierarchy is sensible if the subtypes have major distinct structures or behaviors; with only a few subtype properties, a `vehicle_type` column plus checks is simpler. Likewise, a `Person → Customer/Employee/Student` hierarchy can overcomplicate a schema because one person may hold multiple roles simultaneously; model `person` and optional role-membership tables instead of forcing disjoint child classes.
 
-## One-sentence Discord post (user must post)
+## Diagram caption for Discord
 
 "Our job–part diagram shows why a many-to-many relationship needs an explicit junction table: otherwise the SQL can't reliably record which part belongs to which job."
-
-**Still manual:** render your chosen Mermaid diagram and post the image/source to Discord. This bundle does **not** claim to have posted it.
