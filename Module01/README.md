@@ -1,43 +1,25 @@
-# Module 1
+# Module 1 — Introduction and Local-First Foundations
 
+## Learning Goals
 
-> When you start editing this file, remove this description.
->
-> Usually the first things you have to document are some inspirations hinting at what
-> you might be able to build in this class, a personal profile description regarding
-> programming expertise, previous MCU knowledge, creative qualities, and expectations
+1. Understand how the Databases course works and how to document learning in a portfolio.
+2. Learn Git and GitHub for version control.
+3. Set up Python and the database tools using uv.
+4. Understand embedded databases like SQLite and client-server databases like PostgreSQL.
+5. Learn to load and query SQLite data using SQL and Python.
+6. Test and verify AI-generated SQL suggestions.
 
-Module description
+## My Goal
 
-## Task Inspirations
+I want to understand how databases store information, how SQL queries work, and how to check my results.
 
-- Inspiration 1
-- Inspiration 2
+## My Task Pod
 
-## Task Personal Profile
+- [Lyon Tadeo — Portfolio](https://github.com/LyonTadz/databases-portfolio)
+- [Mahmoud Gaber — GitHub](https://github.com/Gaber259)
 
-## Task What is IoT
+## Useful Links
 
-Domains and included areas:
-
--
--
-
-
-Commonly used (data) protocols:
-
--
--
-
-Typical devices (appliance or micro controller):
-
--
--
-
-Challenges:
-
--
--
-
-## Reflection 1
-[Reflection 1](/Reflections/ref01.md)
+- [Main Portfolio](../README.md)
+- [Module 2](../Module02/README.md)
+- [Lyon's Portfolio](https://github.com/LyonTadz/databases-portfolio)

@@ -1,11 +1,22 @@
-Databases Portfolio
+# Databases Portfolio
 
-This repository contains my coursework and practical exercises for the HSBI Databases course.
+This is my portfolio for the Databases course at HSBI.
 
-I will use it to practise SQL, Python, and SQLite, and to document what I learn about working with data.
+I use this repository to document my work and what I learn about SQL, Python, SQLite, and database design.
 
-Module 1: Introduction to Databases
+## Modules
 
-My goal is to learn how to store data in a database, retrieve information using SQL, and explain how I checked my results.
+- [Module 1 — Introduction and Local-First Foundations](Module01/README.md)
+- [Module 2 — Data Contracts and Legacy Schemas](Module02/README.md)
 
-Author: Mahmoud Hussein
+## My Task Pod
+
+My teammates are:
+- [Lyon Tadeo](https://github.com/LyonTadz/databases-portfolio)
+- [Mahmoud Gaber](https://github.com/Gaber259)
+
+We worked together on understanding database concepts, discussing exercises, and explaining ER diagrams.
+
+## Author
+
+Mahmoud Hussein
