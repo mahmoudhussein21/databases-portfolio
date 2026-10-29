@@ -1,26 +1,26 @@
-# Module 2
+# Module 2 — Data Contracts and Legacy Schemas
 
-We are going to show here notes for Task 1, 2, 3, 4, and 5 to prove
+## Tasks A–C
+- [Study Log](study-log.md)
+- [ER Examples](er-examples.md)
 
-## Task ...
+## Task 1 — ER Model
+- [ER Audit](er-audit.md)
+- [ER Diagram](er-diagram.png)
 
-This task was executed by myself.
+## Task 2 — Integrity Problems
+- [SQL Queries](audit_queries.sql)
+- [Results](audit_results.txt)
+- [Defect Report](defect-report.md)
 
-## Task ...
+## Task 3 — Database Contract
+- [Python Contract](contract.py)
+- [Python Tests](test_contract.py)
+- [Contract Notes](contract-notes.md)
 
-This task was executed by my partner. The implementation was about ... 
-It is [here](https://github.com/partner/iot-portfolio/Module02/Readme.md#task-2).
+## Optional Tasks
+- [Task 4 — Inheritance](inheritance-notes.md)
+- [Task 5 — Mermaid Lab](mermaid-lab.md)
 
-## Reflection 2
-[Reflection 2](/Reflections/ref02.md)
-
-## Task ...
-
-...
-
-If the module is longer than 1 week, you might have several reflections within it. If not, delete this and the following.
-
-## Reflection 3
-[Reflection 3](/Reflections/ref03.md)
-
-
+## Reflection
+- [Reflection 02](../Reflections/ref02.md)

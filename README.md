@@ -1,8 +1,6 @@
 # Databases Portfolio
 
-This is my portfolio for the Databases course at HSBI.
-
-I use this repository to document my work and what I learn about SQL, Python, SQLite, and database design.
+My coursework and practical exercises for the HSBI Databases course.
 
 ## Modules
 
@@ -11,11 +9,10 @@ I use this repository to document my work and what I learn about SQL, Python, SQ
 
 ## My Task Pod
 
-My teammates are:
 - [Lyon Tadeo](https://github.com/LyonTadz/databases-portfolio)
 - [Mahmoud Gaber](https://github.com/Gaber259)
 
-We worked together on understanding database concepts, discussing exercises, and explaining ER diagrams.
+We discussed database relationships, ER diagrams, and course exercises together.
 
 ## Author
 
