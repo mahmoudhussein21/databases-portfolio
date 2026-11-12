@@ -1,0 +1,48 @@
+SQLite version: 3.46.1
+
+No additional indexes: dashboard median of 5 runs = 90.384 ms
+    SCAN ol
+    SEARCH o USING INTEGER PRIMARY KEY (rowid=?)
+    SEARCH c USING INTEGER PRIMARY KEY (rowid=?)
+    SEARCH p USING INTEGER PRIMARY KEY (rowid=?)
+    USE TEMP B-TREE FOR GROUP BY
+    USE TEMP B-TREE FOR count(DISTINCT)
+    USE TEMP B-TREE FOR ORDER BY
+   Single-day lookup before index median: 2.206 ms
+      SCAN o
+      SEARCH c USING INTEGER PRIMARY KEY (rowid=?)
+
+Add ordered_on index: dashboard median of 5 runs = 96.543 ms
+    SCAN ol
+    SEARCH o USING INTEGER PRIMARY KEY (rowid=?)
+    SEARCH c USING INTEGER PRIMARY KEY (rowid=?)
+    SEARCH p USING INTEGER PRIMARY KEY (rowid=?)
+    USE TEMP B-TREE FOR GROUP BY
+    USE TEMP B-TREE FOR count(DISTINCT)
+    USE TEMP B-TREE FOR ORDER BY
+   Single-day lookup after index median: 0.082 ms
+      SEARCH o USING INDEX ix_orders_ordered_on (ordered_on=?)
+      SEARCH c USING INTEGER PRIMARY KEY (rowid=?)
+
+Add order_line.order_id index: dashboard median of 5 runs = 269.758 ms
+    SEARCH o USING INDEX ix_orders_ordered_on (ordered_on>? AND ordered_on<?)
+    SEARCH c USING INTEGER PRIMARY KEY (rowid=?)
+    SEARCH ol USING INDEX ix_orderline_order (order_id=?)
+    SEARCH p USING INTEGER PRIMARY KEY (rowid=?)
+    USE TEMP B-TREE FOR GROUP BY
+    USE TEMP B-TREE FOR count(DISTINCT)
+    USE TEMP B-TREE FOR ORDER BY
+
+Add order_line.product_id index: dashboard median of 5 runs = 286.799 ms
+    SEARCH o USING INDEX ix_orders_ordered_on (ordered_on>? AND ordered_on<?)
+    SEARCH c USING INTEGER PRIMARY KEY (rowid=?)
+    SEARCH ol USING INDEX ix_orderline_order (order_id=?)
+    SEARCH p USING INTEGER PRIMARY KEY (rowid=?)
+    USE TEMP B-TREE FOR GROUP BY
+    USE TEMP B-TREE FOR count(DISTINCT)
+    USE TEMP B-TREE FOR ORDER BY
+
+Negative control: function on ordered_on often defeats the index
+    SCAN orders
+Positive control: product_id filter uses the product index
+    SEARCH order_line USING INDEX ix_orderline_product (product_id=?)

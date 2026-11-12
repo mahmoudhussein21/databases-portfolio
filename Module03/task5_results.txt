@@ -1,0 +1,23 @@
+Approach 1: 400 rows, elapsed 0.014s, first 5: [(1, 'Customer 1', 30), (6, 'Customer 6', 30), (11, 'Customer 11', 30), (16, 'Customer 16', 30), (21, 'Customer 21', 30)]
+  SCAN o
+  SEARCH c USING INTEGER PRIMARY KEY (rowid=?)
+  USE TEMP B-TREE FOR GROUP BY
+  USE TEMP B-TREE FOR ORDER BY
+Approach 2: 400 rows, elapsed 4.160s, first 5: [(1, 'Customer 1', 30), (6, 'Customer 6', 30), (11, 'Customer 11', 30), (16, 'Customer 16', 30), (21, 'Customer 21', 30)]
+  SCAN c
+  CORRELATED SCALAR SUBQUERY 2
+  SCAN o
+  CORRELATED SCALAR SUBQUERY 1
+  SCAN o
+  USE TEMP B-TREE FOR ORDER BY
+Approach 3: 400 rows, elapsed 0.013s, first 5: [(1, 'Customer 1', 30), (6, 'Customer 6', 30), (11, 'Customer 11', 30), (16, 'Customer 16', 30), (21, 'Customer 21', 30)]
+  CO-ROUTINE (subquery-1)
+  CO-ROUTINE (subquery-3)
+  SCAN o
+  SEARCH c USING INTEGER PRIMARY KEY (rowid=?)
+  USE TEMP B-TREE FOR ORDER BY
+  SCAN (subquery-3)
+  SCAN (subquery-1)
+  USE TEMP B-TREE FOR DISTINCT
+  USE TEMP B-TREE FOR ORDER BY
+Verified: the three SQL versions return identical rows in the same order.

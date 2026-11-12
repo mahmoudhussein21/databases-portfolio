@@ -1,0 +1,6 @@
+Normal lookup: [(1, 'Customer 1')]
+Unsafe injected lookup returns: 2000 rows (should be zero)
+Safe parameterized lookup returns: []
+Apostrophe in customer name breaks unsafe lookup: True
+Apostrophe in customer name is safe when bound: []
+Checks passed: only the unsafe SQL is affected by the injection string.

@@ -1,0 +1,15 @@
+Actual SQLite plans for a rebuilt Module 2 legacy database; SQLite 3.46.1
+
+technician equals Beier: SELECT * FROM maint_job WHERE technician = 'Beier'
+Predicted (before): SCAN; observed before: ['SCAN maint_job']
+Observed after creating ix_job_tech: ['SEARCH maint_job USING INDEX ix_job_tech (technician=?)']
+
+machine equals cnc-02: SELECT * FROM machine WHERE machine_name = 'cnc-02'
+Predicted (before): SCAN; observed before: ['SCAN machine']
+Observed after creating ix_job_tech: ['SCAN machine']
+
+technician contains ei: SELECT * FROM maint_job WHERE technician LIKE '%ei%'
+Predicted (before): SCAN; observed before: ['SCAN maint_job']
+Observed after creating ix_job_tech: ['SCAN maint_job']
+
+Function-wrapped column plan: ['SCAN maint_job']
