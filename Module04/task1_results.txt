@@ -1,0 +1,10 @@
+SQLite 3.51.0
+PRAGMA foreign_keys: ON
+Valid seed reading: (sensor_id=1, ts=2026-03-01 08:00:00, value=41.5, interval_s=1)
+Generated energy_j for seed row: 41.5 (value * interval_s)
+temperature 9000: REJECTED -> IntegrityError: CHECK constraint failed: value >= -273.15 AND value <= 5000
+text hot in REAL: REJECTED -> IntegrityError: cannot store TEXT value in REAL column reading.value
+unknown sensor 99: REJECTED -> IntegrityError: FOREIGN KEY constraint failed
+duplicate machine and metric: REJECTED -> IntegrityError: UNIQUE constraint failed: sensor.machine_id, sensor.metric
+missing machine_id: REJECTED -> IntegrityError: NOT NULL constraint failed: sensor.machine_id
+zero interval: REJECTED -> IntegrityError: CHECK constraint failed: interval_s > 0

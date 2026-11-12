@@ -18,3 +18,4 @@ We discussed database relationships, ER diagrams, and course exercises together.
 
 Mahmoud Hussein
 - [Module 3 — LLM-Assisted SQL & Query Profiling](Module03/README.md)
+- [Module 4 — Data Integrity and Triggers](Module04/README.md)

@@ -1,0 +1,7 @@
+Readings before CSV: 1
+After first CSV pass: 4
+After second pass: 4
+Audit rows after first/second pass: 1/1
+Alarm rows after first/second pass: 1/1
+Repeated (sensor_id, ts) keys were updated instead of duplicated. Unchanged replays did not create extra audits.
+The stored corrected value for sensor 1 at 08:00:00 is 41.7.

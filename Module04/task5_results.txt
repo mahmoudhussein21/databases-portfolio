@@ -1,0 +1,2 @@
+BEFORE INSERT: the reading was not yet in reading (matching rows = 0); alarm rows = 1. Invalid reading rolled back without an alarm.
+AFTER INSERT: the reading was already in reading (matching rows = 1); alarm rows = 1. Invalid reading rolled back without an alarm.

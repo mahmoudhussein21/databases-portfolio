@@ -1,0 +1,7 @@
+chmod 444: file permission bits now 0o444
+mode=ro SELECT COUNT(*) FROM reading: 5
+mode=ro DELETE rejected: attempt to write a readonly database
+machine_health view (machine_id, metric, peak, n): [('cnc-01', 'temp_c', 42.1, 2), ('cnc-01', 'vib_rms', 2.7, 3)]
+Restored original permission mode: 0o644
+PRAGMA query_only DELETE rejected: attempt to write a readonly database
+A view is a convenient report interface, not a security boundary for someone with raw database-file access.

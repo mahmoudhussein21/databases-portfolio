@@ -1,0 +1,7 @@
+SQLite 3.51.0
+10,000 inserts per run; in-memory database; 3 runs per case; times include transaction commit.
+Without alarm trigger: runs (ms) = [9.67, 9.35, 9.21]; median = 9.35 ms; alarm rows = 0
+With alarm trigger: runs (ms) = [19.22, 19.31, 19.26]; median = 19.26 ms; alarm rows = 3334
+Median difference (with - without): 9.91 ms
+The audit trigger is present in both scenarios to isolate the alarm-trigger cost.
+Timings vary between computers; run this script locally for Mac-specific results.

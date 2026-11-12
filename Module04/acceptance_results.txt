@@ -1,0 +1,11 @@
+LOOSE TABLE: all three bad records were accepted
+   (1, 'temp_c', 9000.0, 'real')
+   (1, 'temp_c', 'hot', 'text')
+   (2, 'bogus', -500.0, 'real')
+STRICT TABLE / impossible temperature: rejected (IntegrityError: CHECK constraint failed: value BETWEEN -273.15 AND 5000)
+STRICT TABLE / text instead of number: rejected (IntegrityError: cannot store TEXT value in REAL column strict_reading.value)
+STRICT TABLE / invalid metric: rejected (IntegrityError: CHECK constraint failed: metric IN ('temp_c','vib_rms','spindle_load'))
+STRICT TABLE / NULL value: rejected (IntegrityError: NOT NULL constraint failed: strict_reading.value)
+STRICT TABLE / valid but possibly inaccurate value: accepted
+CHECK without NOT NULL: NULL accepted
+Notes: a plausible but incorrect sensor value may still pass all constraints.
