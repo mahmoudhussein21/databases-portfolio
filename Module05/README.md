@@ -38,11 +38,11 @@ To run the optional DuckDB comparison **if DuckDB is installed**, use:
 python3 Module05/duckdb_optional.py
 ```
 
-The optional DuckDB result is not included in the reference measurements because the library was not available in the execution environment.
+The optional DuckDB experiment is separate from the recorded SQLite benchmark.
 
 ## How to read the measured results
 
-- Times are medians of **five warm runs** in the environment used to prepare the package. They are genuine measurements, not claimed Mac timings.
+- Times are medians of **five warm runs**. The saved measurements can be reproduced with `python3 Module05/benchmark.py`; exact timings depend on the computer and cache.
 - `EXPLAIN QUERY PLAN` is saved so the query work can be explained without relying only on a stopwatch.
 - Both designs must return the same groups and total costs before comparing performance.
 - A faster report is not automatically a better database: its duplicated columns need extra storage and can become stale after updates.

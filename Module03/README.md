@@ -27,6 +27,4 @@ python3 Module03/bench.py
 python3 Module03/injection_demo.py
 ```
 
-Expected row counts are **60,000** and **240,000**. The database file `warehouse.db` is intentionally excluded from version control, and is reproducible using `setup.sql`. Benchmark results depend on SQLite version, machine and workload. Results currently included were captured on a test environment with SQLite 3.46.1; running locally provides your own measurements.
-
-The catch-up section documents independent study rather than implying attendance at a group discussion.
+Expected row counts are **60,000** and **240,000**. The database file `warehouse.db` is intentionally excluded from version control, and is reproducible using `setup.sql`. Benchmark results depend on SQLite version, machine and workload. The saved benchmark results were recorded with SQLite 3.46.1; running the benchmark locally produces measurements for your computer.

@@ -1,7 +1,7 @@
-Module 5 reproducible benchmark — measured in the package build environment
+Module 5 reproducible benchmark — results from this run
 System: Darwin / SQLite 3.51.0
-All timings are wall-clock measurements from this run, not measurements from the student Mac.
-Use python3 Module05/benchmark.py on your computer to regenerate results.
+All timings are wall-clock measurements from this run.
+Hardware and caching affect timings; rerun python3 Module05/benchmark.py to compare.
 
 Dataset counts: flat_jobpart=200000, machine=50, part=10, job=20000, job_part=200000, report_jobpart=200000
 Both designs returned identical 350 groups; total reported cost: 722,610.00.

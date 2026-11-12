@@ -8,7 +8,7 @@ DuckDB EXPLAIN ANALYZE (actual operator counts and timings)
 ││    Query Profiling Information    ││
 │└───────────────────────────────────┘│
 └─────────────────────────────────────┘
-EXPLAIN ANALYZE SELECT machine_id, site, technician, SUM(part_price) AS cost FROM read_parquet('/Users/mahmoudhossam/Documents/databases-portfolio/Module06a/report_history.parquet') WHERE done_on >= '2026-01-01' GROUP BY machine_id, site, technician
+EXPLAIN ANALYZE SELECT machine_id, site, technician, SUM(part_price) AS cost FROM read_parquet('~/Documents/databases-portfolio/Module06a/report_history.parquet') WHERE done_on >= '2026-01-01' GROUP BY machine_id, site, technician
 ┌────────────────────────────────────────────────┐
 │┌──────────────────────────────────────────────┐│
 ││              Total Time: 0.0136s             ││
@@ -67,7 +67,7 @@ EXPLAIN ANALYZE SELECT machine_id, site, technician, SUM(part_price) AS cost FRO
 │    Total Files Read: 1    │
 │                           │
 │        Filename(s):       │
-│    /Users/mahmoudhossam   │
+│    ~   │
 │    /Documents/databases   │
 │    -portfolio/Module06a   │
 │  /report_history.parquet  │

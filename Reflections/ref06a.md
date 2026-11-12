@@ -18,7 +18,7 @@ One interesting question is how to know that an exported file still has the righ
 
 ## Interaction with peers and instructors
 
-The module's review questions cover how to compare the engines fairly, when DuckDB is not a good choice, and what happens if a reporting file is out of date. I have recorded independent answers in `Module06a/discussion-notes.md` without describing an unconfirmed group conversation.
+The module's review questions cover how to compare the engines fairly, when DuckDB is not a good choice, and what happens if a reporting file is out of date. I worked through these questions independently and recorded my answers in `Module06a/discussion-notes.md`.
 
 ## How did you verify AI suggestions?
 

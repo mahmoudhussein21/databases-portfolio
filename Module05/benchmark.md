@@ -1,6 +1,6 @@
 # Rounds 4–5 — Benchmark and storage results
 
-The results below are measured in the environment used to build this portfolio package (SQLite 3.51.0, Darwin). Rerunning `python3 Module05/benchmark.py` on a Mac regenerates this report with Mac measurements. Hardware and caching affect the numbers.
+These results were measured with SQLite 3.51.0 on macOS. Run `python3 Module05/benchmark.py` to repeat the benchmark; hardware and caching affect the timings.
 
 ## Verified data counts
 

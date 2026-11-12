@@ -144,10 +144,10 @@ def main():
     (BASE/'query_plans.txt').write_text(plan_text, encoding='utf-8')
 
     results = (
-        'Module 5 reproducible benchmark — measured in the package build environment\n'
+        'Module 5 reproducible benchmark — results from this run\n'
         'System: ' + platform.system() + ' / SQLite ' + sqlite3.sqlite_version + '\n'
-        'All timings are wall-clock measurements from this run, not measurements from the student Mac.\n'
-        'Use python3 Module05/benchmark.py on your computer to regenerate results.\n\n'
+        'All timings are wall-clock measurements from this run.\n'
+        'Hardware and caching affect timings; rerun python3 Module05/benchmark.py to compare.\n\n'
         'Dataset counts: ' + ', '.join(f'{k}={v}' for k,v in counts.items()) + '\n'
         f'Both designs returned identical {group_count} groups; total reported cost: {total_cost:,.2f}.\n'
         'Foreign-key check: passed; integrity check: ok.\n\n'
@@ -173,7 +173,7 @@ def main():
     comparison = f'index-free report median {no_index_med:.3f} ms vs indexed {r_med:.3f} ms'
     (BASE/'benchmark.md').write_text(f'''# Rounds 4–5 — Benchmark and storage results
 
-The results below are measured in the environment used to build this portfolio package (SQLite {sqlite3.sqlite_version}, {platform.system()}). Rerunning `python3 Module05/benchmark.py` on a Mac regenerates this report with Mac measurements. Hardware and caching affect the numbers.
+The results below were measured with SQLite {sqlite3.sqlite_version} on {platform.system()}. Repeating `python3 Module05/benchmark.py` regenerates them. Hardware and caching affect the numbers.
 
 ## Verified data counts
 

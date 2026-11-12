@@ -21,7 +21,7 @@ GROUP BY machine_id, site, technician"""
     with duckdb.connect() as con:
         explain = con.execute("EXPLAIN ANALYZE " + sql_d).fetchone()[1]
     print("\nDuckDB EXPLAIN ANALYZE (actual operator counts and timings)")
-    print(explain)
+    print(explain.replace(str(Path.home()), "~"))
     print("\nInterpretation: DuckDB reads the selected Parquet columns; "
           "SQLite scans rows, then groups them. Read the operator counts above.")
 
