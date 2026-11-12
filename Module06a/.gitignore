@@ -1,0 +1,8 @@
+# Generated database and analytical extracts stay on the local machine.
+*.db
+*.db-shm
+*.db-wal
+*.csv
+*.parquet
+*.json
+__pycache__/

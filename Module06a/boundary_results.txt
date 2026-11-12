@@ -1,0 +1,4 @@
+sqlite: 1,000 inserts 0.705 ms; 1,000 point lookups 0.903 ms
+duckdb: 1,000 inserts 264.874 ms; 1,000 point lookups 133.759 ms
+duckdb_executemany: 1,000 inserts 213.073 ms; 1,000 point lookups 136.020 ms
+All writes used a single explicit transaction for comparability.

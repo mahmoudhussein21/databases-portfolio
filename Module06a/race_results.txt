@@ -1,0 +1,3 @@
+dashboard: matching groups=350 | SQLite median 1314.41 ms [1300.30-1344.94] | DuckDB median 9.84 ms [9.54-10.61] | ratio=133.56x
+monthly: matching groups=1500 | SQLite median 1446.12 ms [1437.83-1458.34] | DuckDB median 10.50 ms [10.05-11.01] | ratio=137.78x
+Both engines returned matching grouped values for both reports.

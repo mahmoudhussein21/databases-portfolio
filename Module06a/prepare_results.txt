@@ -1,0 +1,5 @@
+Source Module 5 rows: 200,000
+History SQLite rows: 2,000,000
+History price sum (rounded): 21000000.0
+History SQLite size: 107.46 MiB
+Base CSV size: 10.30 MiB

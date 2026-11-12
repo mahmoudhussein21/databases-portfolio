@@ -1,0 +1,4 @@
+SQLite: rows=2000000, rounded price sum=21000000.0
+Parquet: rows=2000000, rounded price sum=21000000.0
+CHECK PASSED: row count and rounded price sum match.
+SHA256: 51f8df69c9b9df8426c12d521fb35acaf48910c2c2f7e9c245350c1c1cd88497

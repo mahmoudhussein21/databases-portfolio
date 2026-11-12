@@ -1,0 +1,7 @@
+sqlite_rows: 2000000
+parquet_rows: 2000000
+sqlite_sum: 21000000.0
+parquet_sum: 21000000.0
+sqlite_mib: 107.465
+parquet_mib: 2.214
+Checks passed: same row count and rounded total price.
