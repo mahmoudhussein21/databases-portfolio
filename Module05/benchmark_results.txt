@@ -1,0 +1,23 @@
+Module 5 reproducible benchmark — measured in the package build environment
+System: Darwin / SQLite 3.51.0
+All timings are wall-clock measurements from this run, not measurements from the student Mac.
+Use python3 Module05/benchmark.py on your computer to regenerate results.
+
+Dataset counts: flat_jobpart=200000, machine=50, part=10, job=20000, job_part=200000, report_jobpart=200000
+Both designs returned identical 350 groups; total reported cost: 722,610.00.
+Foreign-key check: passed; integrity check: ok.
+
+A (normalized), five warm times (ms): 47.444, 47.425, 46.531, 47.543, 46.592
+A median (ms): 47.425
+B (report WITH index), five warm times (ms): 44.307, 43.509, 44.430, 43.469, 44.517
+B median (ms): 44.307
+B (report WITHOUT index), five warm times (ms): 34.184, 34.121, 34.132, 34.102, 34.016
+B without-index median (ms): 34.121
+
+3NF site update: 1 row(s), 0.238 ms; rolled back.
+Report site update: 4000 row(s), 4.552 ms; rolled back.
+
+3NF table storage: 4,071,424 bytes (3,976.0 KiB)
+Report table storage: 11,091,968 bytes (10,832.0 KiB)
+3NF autoindex storage (separate, not included above): 4,096,000 bytes (4,000.0 KiB)
+Report index storage (separate): 2,990,080 bytes (2,920.0 KiB)

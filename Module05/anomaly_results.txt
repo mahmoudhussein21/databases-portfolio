@@ -1,0 +1,15 @@
+Anomalies on the five-row sample (SQLite in-memory database)
+
+UPDATE anomaly: changed one row; the same machine now has conflicting sites.
+Rows changed: 1
+(1, 'P-0001', 'Bielefeld')
+(1, 'P-0002', 'Gütersloh')
+(3, 'P-0003', 'Gütersloh')
+
+INSERT anomaly: a new unused part fits only as a row without a job.
+Incomplete row: (None, 'P-0099', 99.0)
+
+DELETE anomaly: deleting the last job-part row erased the part-price fact.
+Rows deleted: 1; remaining P-0002 rows: 0
+
+All three anomaly examples reproduced.

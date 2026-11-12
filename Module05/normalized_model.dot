@@ -1,0 +1,11 @@
+digraph normalized {
+ graph [rankdir=LR, bgcolor="white", fontsize=15, fontname="Helvetica", label="3NF: one home for each fact", labelloc=t, nodesep="0.55", ranksep="0.9"];
+ node [shape=record, fontname="Helvetica", style="filled", fillcolor="#f8fafc", color="#64748b"];
+ machine [label="{machine|machine_id (PK)\lsite\l}"];
+ job [label="{job|job_id (PK)\lmachine_id (FK)\ltechnician\ldone_on\l}"];
+ jp [label="{job_part|job_id (PK, FK)\lpart_no (PK, FK)\l}"];
+ part [label="{part|part_no (PK)\lpart_price\l}"];
+ job -> machine [label="many to one"];
+ jp -> job [label="many to one"];
+ jp -> part [label="many to one"];
+}

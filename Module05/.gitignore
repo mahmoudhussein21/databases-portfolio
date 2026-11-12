@@ -1,0 +1,5 @@
+# Large local SQLite test databases are reproducible from setup.sql
+*.db
+*.db-journal
+*.db-shm
+*.db-wal

@@ -1,0 +1,16 @@
+SQLite version: 3.51.0
+
+A. Normalized four-way join
+  SCAN jp
+  SEARCH j USING INTEGER PRIMARY KEY (rowid=?)
+  SEARCH m USING INDEX sqlite_autoindex_machine_1 (machine_id=?)
+  SEARCH p USING INDEX sqlite_autoindex_part_1 (part_no=?)
+  USE TEMP B-TREE FOR GROUP BY
+
+B. Report table WITH ix_report_machine
+  SCAN report_jobpart USING INDEX ix_report_machine
+  USE TEMP B-TREE FOR GROUP BY
+
+B. Report table WITHOUT ix_report_machine
+  SCAN report_jobpart
+  USE TEMP B-TREE FOR GROUP BY

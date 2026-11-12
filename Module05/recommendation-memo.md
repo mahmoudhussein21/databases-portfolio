@@ -1,0 +1,5 @@
+# Round 6 — Recommendation to the operations lead
+
+I recommend keeping `machine`, `part`, `job`, and `job_part` in 3NF as the trusted transactional data. The two dashboard queries produced identical results (350 groups), so the comparison is fair. In this test the normalized query took a median 47.425 ms, while the indexed report took 44.307 ms. A site change affects just one machine row in 3NF, but 4,000 copied rows in the report table. Therefore, I would not replace the normalized database with the report table; the duplicate facts create a risk of stale or inconsistent data. If a real dashboard needs faster repeated reads, I would maintain a separate report table and measure it on production-sized data. A scheduled rebuild after ingest batches is a simple way to refresh the report, with the refresh delay documented; triggers are possible if immediate updates are necessary but add write overhead. I would repeat the plan, timing, and storage tests after adding a refresh mechanism, because its cost is part of the decision.
+
+Evidence: [`benchmark.md`](benchmark.md), [`benchmark_results.txt`](benchmark_results.txt), and [`query_plans.txt`](query_plans.txt).

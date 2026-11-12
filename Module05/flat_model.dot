@@ -1,0 +1,5 @@
+digraph flat {
+ graph [rankdir=LR, bgcolor="white", fontsize=15, fontname="Helvetica", label="Flat job-part table (same facts repeated)", labelloc=t];
+ node [shape=record, fontname="Helvetica", style="filled", fillcolor="#f8fafc", color="#64748b"];
+ flat [label="{flat_jobpart|job_id (part of key)\lpart_no (part of key)\lmachine_id\lsite (repeated)\ltechnician (repeated)\lpart_price (repeated)\ldone_on\l}"];
+}
