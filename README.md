@@ -17,3 +17,4 @@ We discussed database relationships, ER diagrams, and course exercises together.
 ## Author
 
 Mahmoud Hussein
+- [Module 3 — LLM-Assisted SQL & Query Profiling](Module03/README.md)
