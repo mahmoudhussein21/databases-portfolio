@@ -1,0 +1,2 @@
+shelve  set=   1.591s get=   0.077s
+sqlite  set=   0.023s get=   0.104s
