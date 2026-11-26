@@ -10,6 +10,7 @@ My coursework and practical exercises for the HSBI Databases course.
 - [Module 4 — Data Integrity and Triggers](Module04/README.md)
 - [Module 5 — Normalization vs. Denormalization](Module05/README.md)
 - [Module 6a — DuckDB and Parquet](Module06a/README.md)
+- [Module 6b — Polyglot Persistence](Module06b/)
 
 ## My Task Pod
 

@@ -6,3 +6,4 @@
 - [Reflection 04 — Module 4](ref04.md)
 - [Reflection 05 — Module 5](ref05.md)
 - [Reflection 06a — Module 6a](ref06a.md)
+- [Reflection 06b — Module 6b](ref06b.md)
