@@ -17,7 +17,7 @@ My coursework and practical exercises for the HSBI Databases course.
 - [Lyon Tadeo](https://github.com/LyonTadz/databases-portfolio)
 - [Mahmoud Gaber](https://github.com/Gaber259)
 
-We discussed database relationships, ER diagrams, and course exercises together.
+We worked together throughout the course, discussing the exercises and helping each other when we got stuck.
 
 ## Author
 
